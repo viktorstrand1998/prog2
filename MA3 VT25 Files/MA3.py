@@ -67,12 +67,28 @@ def sphere_volume_parallel1(n,d,np):
     end = pc()
     time = end - start
     return float(result), time
+
 #Ex4: parallel code - parallelize actual computations by splitting data
 def sphere_volume_parallel2(n,d,np=10):
-    #n is the number of points
-    # d is the number of dimensions of the sphere
-    #np is the number of processes
-    return 
+    start = pc()
+    n_paralell = [n//np]*np
+    d_paralell = [d]*np
+    with future.ProcessPoolExecutor() as ex:
+        results = list(ex.map(sphere_volume, n_paralell, d_paralell))
+            
+    result = sum(results) / len(results)
+    end = pc()
+    time = end - start
+    return float(result), time
+
+# Ex3: On local computer (gaming pc): sequential time: 6.66213539999444
+# and parallell time: 1.8833
+
+# on Linux computer sequential time:  28.90289143519476
+# and parallell time: 5.318236640188843
+
+# on local laptop, sequential time: 42.055
+# and parallell time: 19.78
     
 def main():
     #Ex1
@@ -107,13 +123,15 @@ def main():
     print(f'Parallel time: {time}')
     print(f'Volume: {vol}')
     #Ex4
-#     n = 1000000
-#     d = 11
-#     start = pc()
-#     sphere_volume(n,d)
-#     stop = pc()
-#     print(f"Ex4: Sequential time of {d} and {n}: {stop-start}")
-#     print("What is parallel time?")
+    n = 1000000
+    d = 11
+    start = pc()
+    sphere_volume(n,d)
+    stop = pc()
+    print(f"Ex4: Sequential time of {d} and {n}: {stop-start}")
+    print("What is parallel time?")
+    vol, time = sphere_volume_parallel2(n,d,np)
+    print(f'Parallel time: {time}')
 
     
     
