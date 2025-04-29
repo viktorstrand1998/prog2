@@ -99,12 +99,12 @@ def main():
     n = 100000
     d = 2
     print(sphere_volume(n,d))
-    print(f"Actual volume of {d} dimentional sphere = {hypersphere_exact(d)}")
+    print(f"Ex2: Actual volume of {d} dimentional sphere = {hypersphere_exact(d)}")
 
     n = 100000
     d = 11
     print(sphere_volume(n,d))
-    print(f"Actual volume of {d} dimentional sphere = {hypersphere_exact(d)}")
+    print(f"Ex2: Actual volume of {d} dimentional sphere = {hypersphere_exact(d)}")
 
     #Ex3
     n = 100000
@@ -118,10 +118,10 @@ def main():
     print(mean)
     stop = pc()
     print(f"Ex3: Sequential time of {d} and {n}: {stop-start}")
-    print("What is parallel time?")
+    print("Ex3: What is parallel time?")
     vol, time = sphere_volume_parallel1(n,d,np)
-    print(f'Parallel time: {time}')
-    print(f'Volume: {vol}')
+    print(f'Ex3: Parallel time: {time}')
+    print(f'Ex3: Volume: {vol}')
     #Ex4
     n = 1000000
     d = 11
@@ -129,9 +129,9 @@ def main():
     sphere_volume(n,d)
     stop = pc()
     print(f"Ex4: Sequential time of {d} and {n}: {stop-start}")
-    print("What is parallel time?")
+    print("Ex4: What is parallel time?")
     vol, time = sphere_volume_parallel2(n,d,np)
-    print(f'Parallel time: {time}')
+    print(f'Ex4: Parallel time: {time}')
 
     
     
